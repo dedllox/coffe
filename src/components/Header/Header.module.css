@@ -1,0 +1,157 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 15px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #2c1810;
+  font-weight: 700;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logoIcon {
+  font-size: 2rem;
+  margin-right: 10px;
+}
+
+.desktopNav {
+  display: flex;
+  gap: 30px;
+}
+
+.navLink {
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 10px 0;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: #8B4513;
+}
+
+.navLink.active {
+  color: #8B4513;
+}
+
+.navLink.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #8B4513;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cartButton {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #2c1810;
+  cursor: pointer;
+  text-decoration: none;
+  padding: 5px;
+}
+
+.cartCount {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #8B4513;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+}
+
+.menuButton {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  color: #2c1810;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.mobileNav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobileNavLink {
+  text-decoration: none;
+  color: #555;
+  font-size: 1.2rem;
+  padding: 10px 20px;
+  border-radius: 10px;
+  transition: background 0.3s;
+}
+
+.mobileNavLink:hover,
+.mobileNavLink.active {
+  background: #f5f5f5;
+  color: #8B4513;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .desktopNav {
+    display: none;
+  }
+  
+  .menuButton {
+    display: block;
+  }
+  
+  .mobileNav {
+    display: flex;
+  }
+}

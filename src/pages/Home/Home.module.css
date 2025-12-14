@@ -1,0 +1,89 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 80vh;
+  gap: 40px;
+}
+
+.heroContent {
+  flex: 1;
+}
+
+.heroContent h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #2c1810;
+}
+
+.heroContent p {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.ctaButton {
+  background: #8B4513;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+  background: #A0522D;
+}
+
+.heroImage {
+  flex: 1;
+  max-width: 600px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-top: 60px;
+}
+
+.feature {
+  background: white;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.feature h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #2c1810;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .heroContent h1 {
+    font-size: 2rem;
+  }
+  
+  .heroImage {
+    width: 100%;
+  }
+}

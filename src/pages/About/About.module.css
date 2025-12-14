@@ -1,0 +1,279 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.hero {
+  text-align: center;
+  padding: 60px 0 40px;
+  background: linear-gradient(135deg, #f5efe6 0%, #fffaf0 100%);
+  border-radius: 0 0 40px 40px;
+  margin-bottom: 60px;
+}
+
+.title {
+  font-size: 3rem;
+  color: #2c1810;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.storySection {
+  margin-bottom: 80px;
+}
+
+.storyContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.storyText h2 {
+  font-size: 2.2rem;
+  color: #2c1810;
+  margin-bottom: 30px;
+}
+
+.storyText p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.storyImage img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #2c1810;
+  margin-bottom: 50px;
+}
+
+.features {
+  margin-bottom: 80px;
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.featureCard {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.featureIcon {
+  width: 80px;
+  height: 80px;
+  background: #8B4513;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  font-size: 2rem;
+}
+
+.featureCard h3 {
+  font-size: 1.3rem;
+  color: #2c1810;
+  margin-bottom: 15px;
+}
+
+.featureCard p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.timelineSection {
+  margin-bottom: 80px;
+  padding: 60px 0;
+  background: #f9f5f0;
+  border-radius: 40px;
+}
+
+.timeline {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.timelineItem {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.timelineItem::before {
+  content: '';
+  position: absolute;
+  left: 120px;
+  top: 0;
+  bottom: -40px;
+  width: 2px;
+  background: #8B4513;
+}
+
+.timelineItem:last-child::before {
+  display: none;
+}
+
+.timelineYear {
+  width: 100px;
+  height: 100px;
+  background: #8B4513;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-right: 40px;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.timelineContent {
+  flex: 1;
+  padding-top: 20px;
+}
+
+.timelineContent h3 {
+  font-size: 1.5rem;
+  color: #2c1810;
+  margin-bottom: 10px;
+}
+
+.timelineContent p {
+  color: #666;
+  line-height: 1.6;
+}
+
+.teamSection {
+  margin-bottom: 80px;
+}
+
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.teamCard {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.teamCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+
+.teamImage {
+  height: 250px;
+  overflow: hidden;
+}
+
+.teamImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.teamCard:hover .teamImage img {
+  transform: scale(1.05);
+}
+
+.teamInfo {
+  padding: 30px;
+  text-align: center;
+}
+
+.teamInfo h3 {
+  font-size: 1.5rem;
+  color: #2c1810;
+  margin-bottom: 5px;
+}
+
+.teamRole {
+  color: #8B4513;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.teamExperience {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 15px;
+}
+
+.teamDescription {
+  color: #555;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2.2rem;
+  }
+  
+  .storyContent {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .sectionTitle {
+    font-size: 2rem;
+  }
+  
+  .timelineItem {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .timelineItem::before {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .timelineYear {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  
+  .teamGrid {
+    grid-template-columns: 1fr;
+  }
+}

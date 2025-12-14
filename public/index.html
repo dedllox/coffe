@@ -1,43 +1,164 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
+    <meta name="theme-color" content="#8B4513" />
     <meta
       name="description"
-      content="Web site created using create-react-app"
+      content="Кофейня 'Уют' - лучший кофе в городе. Онлайн-заказ, доставка, уютная атмосфера."
     />
+    <meta name="keywords" content="кофе, кофейня, доставка кофе, завтрак, десерты, Санкт-Петербург" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    
+    <!-- Важно для SEO -->
+    <title>Кофейня "Уют" - Лучший кофе в Санкт-Петербурге</title>
+    <meta property="og:title" content="Кофейня 'Уют' - Лучший кофе в городе" />
+    <meta property="og:description" content="Заказывайте кофе с доставкой или приходите в нашу уютную кофейню" />
+    <meta property="og:image" content="%PUBLIC_URL%/og-image.jpg" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Шрифты (опционально) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      /* Preloader чтобы не было белого экрана при загрузке */
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      /* Стили для прелоадера */
+      .app-loading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #fdf6e3 0%, #fffaf0 100%);
+      }
+      
+      .coffee-loader {
+        width: 80px;
+        height: 80px;
+        position: relative;
+        margin-bottom: 20px;
+      }
+      
+      .coffee-loader:before,
+      .coffee-loader:after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        animation: coffeePulse 1.5s ease-in-out infinite;
+      }
+      
+      .coffee-loader:before {
+        width: 80px;
+        height: 80px;
+        background: rgba(139, 69, 19, 0.2);
+      }
+      
+      .coffee-loader:after {
+        width: 60px;
+        height: 60px;
+        top: 10px;
+        left: 10px;
+        background: rgba(139, 69, 19, 0.4);
+        animation-delay: 0.2s;
+      }
+      
+      @keyframes coffeePulse {
+        0%, 100% {
+          transform: scale(0.8);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div style="
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #2c1810;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+        font-family: sans-serif;
+      ">
+        <div>
+          <h1 style="font-size: 2rem; margin-bottom: 20px;">⚠️ Включите JavaScript</h1>
+          <p style="font-size: 1.2rem; line-height: 1.6;">
+            Для работы этого сайта требуется JavaScript. Пожалуйста, включите его в настройках браузера.
+          </p>
+        </div>
+      </div>
+    </noscript>
+    
+    <!-- Прелоадер (показывается пока React не загрузится) -->
+    <div id="loading" class="app-loading">
+      <div class="coffee-loader"></div>
+      <div style="
+        font-size: 1.2rem;
+        color: #8B4513;
+        font-weight: 500;
+        margin-top: 20px;
+      ">
+        Загрузка кофейни "Уют"...
+      </div>
+    </div>
+    
+    <!-- Сюда React вставит всё приложение -->
     <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    
+    <!-- Скрипт чтобы скрыть прелоадер -->
+    <script>
+      // Скрываем прелоадер когда React загрузится
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          var loading = document.getElementById('loading');
+          if (loading) {
+            loading.style.display = 'none';
+          }
+        }, 500);
+      });
+      
+      // Если React не загрузился за 5 секунд, показываем ошибку
+      setTimeout(function() {
+        var root = document.getElementById('root');
+        var loading = document.getElementById('loading');
+        if (root && root.children.length === 0 && loading) {
+          loading.innerHTML = '<div style="text-align: center; color: #8B4513;">' +
+            '<h2 style="margin-bottom: 20px;">😔 Что-то пошло не так</h2>' +
+            '<p style="margin-bottom: 20px;">Приложение не загрузилось. Попробуйте:</p>' +
+            '<ul style="text-align: left; display: inline-block; margin-bottom: 20px;">' +
+            '<li>Обновить страницу (Ctrl+F5)</li>' +
+            '<li>Проверить подключение к интернету</li>' +
+            '<li>Очистить кэш браузера</li>' +
+            '</ul>' +
+            '<button onclick="location.reload()" style="' +
+            'background: #8B4513; color: white; border: none; padding: 10px 20px; ' +
+            'border-radius: 5px; cursor: pointer; font-size: 1rem;' +
+            '">Обновить страницу</button>' +
+            '</div>';
+        }
+      }, 5000);
+    </script>
   </body>
 </html>
