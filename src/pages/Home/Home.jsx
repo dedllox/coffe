@@ -1,9 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom'; // Добавляем этот импорт
 import styles from './Home.module.css';
 import coffeeImage from './images/coffee-main.jpg';
 
 const Home = () => {
+  const navigate = useNavigate(); // Создаем функцию навигации
+
+  const handleMenuClick = () => {
+    navigate('/menu'); // Переход на страницу меню при клике
+  };
+
   return (
     <div className={styles.container}>
       <motion.section 
@@ -15,7 +22,13 @@ const Home = () => {
         <div className={styles.heroContent}>
           <h1>Добро пожаловать в кофейню "Уют"</h1>
           <p>Лучший кофе в городе с 2010 года</p>
-          <button className={styles.ctaButton}>Посмотреть меню</button>
+          {/* Добавляем onClick обработчик */}
+          <button 
+            className={styles.ctaButton} 
+            onClick={handleMenuClick}
+          >
+            Посмотреть меню
+          </button>
         </div>
         <img src={coffeeImage} alt="Кофе" className={styles.heroImage} />
       </motion.section>

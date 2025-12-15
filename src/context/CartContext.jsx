@@ -1,7 +1,9 @@
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 
+// Создаем контекст
 const CartContext = createContext();
 
+// Загрузка корзины из localStorage
 const loadCartFromStorage = () => {
   try {
     const savedCart = localStorage.getItem('coffeeShopCart');
@@ -11,6 +13,7 @@ const loadCartFromStorage = () => {
   }
 };
 
+// Сохранение корзины в localStorage
 const saveCartToStorage = (cart) => {
   try {
     localStorage.setItem('coffeeShopCart', JSON.stringify(cart));
@@ -19,6 +22,7 @@ const saveCartToStorage = (cart) => {
   }
 };
 
+// Редуктор для управления состоянием корзины
 const cartReducer = (state, action) => {
   let newState;
   
@@ -71,50 +75,60 @@ const cartReducer = (state, action) => {
       newState = state;
   }
   
-  // Сохраняем в localStorage после каждого изменения
+  // Сохраняем новое состояние в localStorage
   saveCartToStorage(newState);
   return newState;
 };
 
+// Провайдер контекста
 export const CartProvider = ({ children }) => {
   const [state, dispatch] = useReducer(cartReducer, loadCartFromStorage());
 
+  // Общее количество товаров (сумма всех quantity)
   const totalItems = state.items.reduce((sum, item) => sum + item.quantity, 0);
+  
+  // Общая стоимость
   const totalPrice = state.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
+  // Функция добавления в корзину
   const addToCart = (product) => {
     dispatch({ type: 'ADD_TO_CART', payload: product });
   };
 
+  // Функция удаления из корзины
   const removeFromCart = (productId) => {
     dispatch({ type: 'REMOVE_FROM_CART', payload: productId });
   };
 
+  // Функция обновления количества
   const updateQuantity = (productId, quantity) => {
     dispatch({ type: 'UPDATE_QUANTITY', payload: { id: productId, quantity } });
   };
 
+  // Функция очистки корзины
   const clearCart = () => {
     dispatch({ type: 'CLEAR_CART' });
   };
 
+  // Значение контекста
+  const value = {
+    items: state.items,
+    totalItems,
+    totalPrice,
+    addToCart,
+    removeFromCart,
+    updateQuantity,
+    clearCart,
+  };
+
   return (
-    <CartContext.Provider
-      value={{
-        items: state.items,
-        totalItems,
-        totalPrice,
-        addToCart,
-        removeFromCart,
-        updateQuantity,
-        clearCart,
-      }}
-    >
+    <CartContext.Provider value={value}>
       {children}
     </CartContext.Provider>
   );
 };
 
+// Хук для использования контекста
 export const useCart = () => {
   const context = useContext(CartContext);
   if (!context) {

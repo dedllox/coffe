@@ -10,7 +10,7 @@ const About = () => {
       name: 'Анна Петрова',
       role: 'Главный бариста',
       experience: '8 лет',
-      image: '/images/team1.jpg',
+      image: '/images/Бариста.jpg',
       description: 'Чемпион России по латте-арт 2021'
     },
     {
@@ -18,7 +18,7 @@ const About = () => {
       name: 'Михаил Иванов',
       role: 'Шеф-кондитер',
       experience: '12 лет',
-      image: '/images/team2.jpg',
+      image: '/images/Кондитер.jpg',
       description: 'Автор уникальных десертов'
     },
     {
@@ -26,7 +26,7 @@ const About = () => {
       name: 'Елена Смирнова',
       role: 'Управляющая',
       experience: '6 лет',
-      image: '/images/team3.jpg',
+      image: '/images/Управляющая.jpeg',
       description: 'Создаёт уютную атмосферу'
     },
   ];
@@ -82,7 +82,7 @@ const About = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <img src="/images/about-story.jpg" alt="Интерьер кофейни" />
+            <img src="/images/Интерьер.jpg" alt="Интерьер кофейни" />
           </motion.div>
         </div>
       </section>

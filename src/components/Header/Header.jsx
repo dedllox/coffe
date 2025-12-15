@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { FiMenu, FiX, FiShoppingCart } from 'react-icons/fi';
-import styles from './Header.module.css';
-import { FiSun, FiMoon } from 'react-icons/fi';
+import { FiMenu, FiX, FiShoppingCart, FiSun, FiMoon } from 'react-icons/fi';
 import { useTheme } from '../../context/ThemeContext';
-
+import { useCart } from '../../context/CartContext'; // ДОБАВЬТЕ ЭТОТ ИМПОРТ
+import styles from './Header.module.css';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDarkMode, toggleTheme } = useTheme();
+  const { totalItems } = useCart(); // ДОБАВЬТЕ ЭТУ СТРОЧКУ
 
   const navItems = [
     { path: '/', label: 'Главная' },
@@ -43,12 +43,16 @@ const Header = () => {
 
         {/* Корзина и кнопка меню */}
         <div className={styles.rightSection}>
-             <button onClick={toggleTheme} className={styles.themeToggle}>
-    {isDarkMode ? <FiSun /> : <FiMoon />}
-  </button>
+          <button onClick={toggleTheme} className={styles.themeToggle}>
+            {isDarkMode ? <FiSun /> : <FiMoon />}
+          </button>
+          
           <Link to="/cart" className={styles.cartButton}>
             <FiShoppingCart />
-            <span className={styles.cartCount}>0</span>
+            {/* ИЗМЕНИТЕ ЭТУ СТРОЧКУ: */}
+            {totalItems > 0 && (
+              <span className={styles.cartCount}>{totalItems}</span>
+            )}
           </Link>
           
           <button
